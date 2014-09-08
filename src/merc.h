@@ -63,9 +63,9 @@ typedef struct mob_prog_act_list MPROG_ACT_LIST;   /* MOBprogram */
 /*
  * Function types.
  */
-typedef void DO_FUN args( ( CHAR_DATA * ch, char *argument ) );
-typedef bool SPEC_FUN args( ( CHAR_DATA * ch ) );
-typedef void SPELL_FUN args( ( int sn, int level, CHAR_DATA * ch, void *vo ) );
+typedef void DO_FUN args((CHAR_DATA * ch, char *argument));
+typedef bool SPEC_FUN args((CHAR_DATA * ch));
+typedef void SPELL_FUN args((int sn, int level, CHAR_DATA * ch, void *vo));
 
 
 
@@ -102,10 +102,9 @@ typedef void SPELL_FUN args( ( int sn, int level, CHAR_DATA * ch, void *vo ) );
 /*
  * Site ban structure.
  */
-struct ban_data
-{
-   BAN_DATA *next;
-   char *name;
+struct ban_data {
+    BAN_DATA *next;
+    char *name;
 };
 
 
@@ -123,20 +122,18 @@ struct ban_data
 #define SKY_RAINING		    2
 #define SKY_LIGHTNING		    3
 
-struct time_info_data
-{
-   int hour;
-   int day;
-   int month;
-   int year;
+struct time_info_data {
+    int hour;
+    int day;
+    int month;
+    int year;
 };
 
-struct weather_data
-{
-   int mmhg;
-   int change;
-   int sky;
-   int sunlight;
+struct weather_data {
+    int mmhg;
+    int change;
+    int sky;
+    int sunlight;
 };
 
 
@@ -159,25 +156,24 @@ struct weather_data
 /*
  * Descriptor (channel) structure.
  */
-struct descriptor_data
-{
-   DESCRIPTOR_DATA *next;
-   DESCRIPTOR_DATA *snoop_by;
-   CHAR_DATA *character;
-   CHAR_DATA *original;
-   char *host;
-   short descriptor;
-   short connected;
-   bool fcommand;
-   char inbuf[4 * MAX_INPUT_LENGTH];
-   char incomm[MAX_INPUT_LENGTH];
-   char inlast[MAX_INPUT_LENGTH];
-   int repeat;
-   char *showstr_head;
-   char *showstr_point;
-   char *outbuf;
-   int outsize;
-   int outtop;
+struct descriptor_data {
+    DESCRIPTOR_DATA *next;
+    DESCRIPTOR_DATA *snoop_by;
+    CHAR_DATA *character;
+    CHAR_DATA *original;
+    char *host;
+    short descriptor;
+    short connected;
+    bool fcommand;
+    char inbuf[4 * MAX_INPUT_LENGTH];
+    char incomm[MAX_INPUT_LENGTH];
+    char inlast[MAX_INPUT_LENGTH];
+    int repeat;
+    char *showstr_head;
+    char *showstr_point;
+    char *outbuf;
+    int outsize;
+    int outtop;
 };
 
 
@@ -185,33 +181,28 @@ struct descriptor_data
 /*
  * Attribute bonus structures.
  */
-struct str_app_type
-{
-   short tohit;
-   short todam;
-   short carry;
-   short wield;
+struct str_app_type {
+    short tohit;
+    short todam;
+    short carry;
+    short wield;
 };
 
-struct int_app_type
-{
-   short learn;
+struct int_app_type {
+    short learn;
 };
 
-struct wis_app_type
-{
-   short practice;
+struct wis_app_type {
+    short practice;
 };
 
-struct dex_app_type
-{
-   short defensive;
+struct dex_app_type {
+    short defensive;
 };
 
-struct con_app_type
-{
-   short hitp;
-   short shock;
+struct con_app_type {
+    short hitp;
+    short shock;
 };
 
 
@@ -229,12 +220,11 @@ struct con_app_type
 /*
  * Help table types.
  */
-struct help_data
-{
-   HELP_DATA *next;
-   short level;
-   char *keyword;
-   char *text;
+struct help_data {
+    HELP_DATA *next;
+    short level;
+    char *keyword;
+    char *text;
 };
 
 
@@ -244,15 +234,14 @@ struct help_data
  */
 #define MAX_TRADE	 5
 
-struct shop_data
-{
-   SHOP_DATA *next;  /* Next shop in list    */
-   short keeper; /* Vnum of shop keeper mob */
-   short buy_type[MAX_TRADE];   /* Item types shop will buy   */
-   short profit_buy;   /* Cost multiplier for buying */
-   short profit_sell;  /* Cost multiplier for selling   */
-   short open_hour; /* First opening hour      */
-   short close_hour;   /* First closing hour      */
+struct shop_data {
+    SHOP_DATA *next;  /* Next shop in list    */
+    short keeper; /* Vnum of shop keeper mob */
+    short buy_type[MAX_TRADE];   /* Item types shop will buy   */
+    short profit_buy;   /* Cost multiplier for buying */
+    short profit_sell;  /* Cost multiplier for selling   */
+    short open_hour; /* First opening hour      */
+    short close_hour;   /* First closing hour      */
 };
 
 
@@ -260,18 +249,17 @@ struct shop_data
 /*
  * Per-class stuff.
  */
-struct class_type
-{
-   char who_name[4]; /* Three-letter name for 'who'   */
-   short attr_prime;   /* Prime attribute      */
-   short weapon; /* First weapon         */
-   short guild;  /* Vnum of guild room      */
-   short skill_adept;  /* Maximum skill level     */
-   short thac0_00;  /* Thac0 for level  0      */
-   short thac0_32;  /* Thac0 for level 32      */
-   short hp_min; /* Min hp gained on leveling  */
-   short hp_max; /* Max hp gained on leveling  */
-   bool fMana; /* Class gains mana on level  */
+struct class_type {
+    char who_name[4]; /* Three-letter name for 'who'   */
+    short attr_prime;   /* Prime attribute      */
+    short weapon; /* First weapon         */
+    short guild;  /* Vnum of guild room      */
+    short skill_adept;  /* Maximum skill level     */
+    short thac0_00;  /* Thac0 for level  0      */
+    short thac0_32;  /* Thac0 for level 32      */
+    short hp_min; /* Min hp gained on leveling  */
+    short hp_max; /* Max hp gained on leveling  */
+    bool fMana; /* Class gains mana on level  */
 };
 
 
@@ -279,15 +267,14 @@ struct class_type
 /*
  * Data structure for notes.
  */
-struct note_data
-{
-   NOTE_DATA *next;
-   char *sender;
-   char *date;
-   char *to_list;
-   char *subject;
-   char *text;
-   time_t date_stamp;
+struct note_data {
+    NOTE_DATA *next;
+    char *sender;
+    char *date;
+    char *to_list;
+    char *subject;
+    char *text;
+    time_t date_stamp;
 };
 
 
@@ -295,14 +282,13 @@ struct note_data
 /*
  * An affect.
  */
-struct affect_data
-{
-   AFFECT_DATA *next;
-   short type;
-   short duration;
-   short location;
-   short modifier;
-   int bitvector;
+struct affect_data {
+    AFFECT_DATA *next;
+    short type;
+    short duration;
+    short location;
+    short modifier;
+    int bitvector;
 };
 
 
@@ -310,10 +296,9 @@ struct affect_data
 /*
  * A kill structure (indexed by level).
  */
-struct kill_data
-{
-   short number;
-   short killed;
+struct kill_data {
+    short number;
+    short killed;
 };
 
 
@@ -660,22 +645,22 @@ struct kill_data
  * ACT bits for players.
  */
 #define PLR_IS_NPC		      1  /* Don't EVER set.   */
-#define PLR_BOUGHT_PET		      2
+#define PLR_BOUGHT_PET 	      2
 
-#define PLR_AUTOEXIT		      8
-#define PLR_AUTOLOOT		     16
-#define PLR_AUTOSAC                  32
+#define PLR_AUTOEXIT   	      8
+#define PLR_AUTOLOOT  	     16
+#define PLR_AUTOSAC          32
 #define PLR_BLANK		     64
 #define PLR_BRIEF		    128
 #define PLR_COMBINE		    512
 #define PLR_PROMPT		   1024
-#define PLR_TELNET_GA		   2048
+#define PLR_TELNET_GA  	   2048
 
-#define PLR_HOLYLIGHT		   4096
-#define PLR_WIZINVIS		   8192
+#define PLR_HOLYLIGHT  	   4096
+#define PLR_WIZINVIS   	   8192
 
 #define	PLR_SILENCE		  32768
-#define PLR_NO_EMOTE		  65536
+#define PLR_NO_EMOTE   	  65536
 #define PLR_NO_TELL		 262144
 #define PLR_LOG			 524288
 #define PLR_DENY		1048576
@@ -714,34 +699,33 @@ struct kill_data
  * Prototype for a mob.
  * This is the in-memory version of #MOBILES.
  */
-struct mob_index_data
-{
-   MOB_INDEX_DATA *next;
-   SPEC_FUN *spec_fun;
-   SHOP_DATA *pShop;
-   char *player_name;
-   char *short_descr;
-   char *long_descr;
-   char *description;
-   short vnum;
-   short count;
-   short killed;
-   short sex;
-   short level;
-   int act;
-   int affected_by;
-   short alignment;
-   short hitroll;   /* Unused */
-   short ac;  /* Unused */
-   short hitnodice; /* Unused */
-   short hitsizedice;  /* Unused */
-   short hitplus;   /* Unused */
-   short damnodice; /* Unused */
-   short damsizedice;  /* Unused */
-   short damplus;   /* Unused */
-   int gold;   /* Unused */
-   MPROG_DATA *mobprogs;   /* Used by MOBprogram */
-   int progtypes; /* Used by MOBprogram */
+struct mob_index_data {
+    MOB_INDEX_DATA *next;
+    SPEC_FUN *spec_fun;
+    SHOP_DATA *pShop;
+    char *player_name;
+    char *short_descr;
+    char *long_descr;
+    char *description;
+    short vnum;
+    short count;
+    short killed;
+    short sex;
+    short level;
+    int act;
+    int affected_by;
+    short alignment;
+    short hitroll;   /* Unused */
+    short ac;  /* Unused */
+    short hitnodice; /* Unused */
+    short hitsizedice;  /* Unused */
+    short hitplus;   /* Unused */
+    short damnodice; /* Unused */
+    short damsizedice;  /* Unused */
+    short damplus;   /* Unused */
+    int gold;   /* Unused */
+    MPROG_DATA *mobprogs;   /* Used by MOBprogram */
+    int progtypes; /* Used by MOBprogram */
 };
 
 
@@ -749,63 +733,62 @@ struct mob_index_data
 /*
  * One character (PC or NPC).
  */
-struct char_data
-{
-   CHAR_DATA *next;
-   CHAR_DATA *next_in_room;
-   CHAR_DATA *master;
-   CHAR_DATA *leader;
-   CHAR_DATA *fighting;
-   CHAR_DATA *reply;
-   SPEC_FUN *spec_fun;
-   MOB_INDEX_DATA *pIndexData;
-   DESCRIPTOR_DATA *desc;
-   AFFECT_DATA *affected;
-   NOTE_DATA *pnote;
-   OBJ_DATA *carrying;
-   ROOM_INDEX_DATA *in_room;
-   ROOM_INDEX_DATA *was_in_room;
-   PC_DATA *pcdata;
-   char *name;
-   char *short_descr;
-   char *long_descr;
-   char *description;
-   char *prompt;
-   short sex;
-   short class;
-   short race;
-   short level;
-   short trust;
-   bool wizbit;
-   int played;
-   time_t logon;
-   time_t save_time;
-   time_t last_note;
-   short timer;
-   short wait;
-   short hit;
-   short max_hit;
-   short mana;
-   short max_mana;
-   short move;
-   short max_move;
-   int gold;
-   int exp;
-   int act;
-   int affected_by;
-   short position;
-   short practice;
-   short carry_weight;
-   short carry_number;
-   short saving_throw;
-   short alignment;
-   short hitroll;
-   short damroll;
-   short armor;
-   short wimpy;
-   short deaf;
-   MPROG_ACT_LIST *mpact;  /* Used by MOBprogram */
-   int mpactnum;  /* Used by MOBprogram */
+struct char_data {
+    CHAR_DATA *next;
+    CHAR_DATA *next_in_room;
+    CHAR_DATA *master;
+    CHAR_DATA *leader;
+    CHAR_DATA *fighting;
+    CHAR_DATA *reply;
+    SPEC_FUN *spec_fun;
+    MOB_INDEX_DATA *pIndexData;
+    DESCRIPTOR_DATA *desc;
+    AFFECT_DATA *affected;
+    NOTE_DATA *pnote;
+    OBJ_DATA *carrying;
+    ROOM_INDEX_DATA *in_room;
+    ROOM_INDEX_DATA *was_in_room;
+    PC_DATA *pcdata;
+    char *name;
+    char *short_descr;
+    char *long_descr;
+    char *description;
+    char *prompt;
+    short sex;
+    short class;
+    short race;
+    short level;
+    short trust;
+    bool wizbit;
+    int played;
+    time_t logon;
+    time_t save_time;
+    time_t last_note;
+    short timer;
+    short wait;
+    short hit;
+    short max_hit;
+    short mana;
+    short max_mana;
+    short move;
+    short max_move;
+    int gold;
+    int exp;
+    int act;
+    int affected_by;
+    short position;
+    short practice;
+    short carry_weight;
+    short carry_number;
+    short saving_throw;
+    short alignment;
+    short hitroll;
+    short damroll;
+    short armor;
+    short wimpy;
+    short deaf;
+    MPROG_ACT_LIST *mpact;  /* Used by MOBprogram */
+    int mpactnum;  /* Used by MOBprogram */
 };
 
 
@@ -813,28 +796,27 @@ struct char_data
 /*
  * Data which only PC's have.
  */
-struct pc_data
-{
-   PC_DATA *next;
-   char *pwd;
-   char *bamfin;
-   char *bamfout;
-   char *title;
-   short perm_str;
-   short perm_int;
-   short perm_wis;
-   short perm_dex;
-   short perm_con;
-   short mod_str;
-   short mod_int;
-   short mod_wis;
-   short mod_dex;
-   short mod_con;
-   short condition[3];
-   short pagelen;
-   short learned[MAX_SKILL];
+struct pc_data {
+    PC_DATA *next;
+    char *pwd;
+    char *bamfin;
+    char *bamfout;
+    char *title;
+    short perm_str;
+    short perm_int;
+    short perm_wis;
+    short perm_dex;
+    short perm_con;
+    short mod_str;
+    short mod_int;
+    short mod_wis;
+    short mod_dex;
+    short mod_con;
+    short condition[3];
+    short pagelen;
+    short learned[MAX_SKILL];
 #ifdef IMC
-   IMC_CHARDATA *imcchardata;
+    IMC_CHARDATA *imcchardata;
 #endif
 };
 
@@ -842,21 +824,19 @@ struct pc_data
  * MOBprogram block
 */
 
-struct mob_prog_act_list
-{
-   MPROG_ACT_LIST *next;
-   char *buf;
-   CHAR_DATA *ch;
-   OBJ_DATA *obj;
-   void *vo;
+struct mob_prog_act_list {
+    MPROG_ACT_LIST *next;
+    char *buf;
+    CHAR_DATA *ch;
+    OBJ_DATA *obj;
+    void *vo;
 };
 
-struct mob_prog_data
-{
-   MPROG_DATA *next;
-   int type;
-   char *arglist;
-   char *comlist;
+struct mob_prog_data {
+    MPROG_DATA *next;
+    int type;
+    char *arglist;
+    char *comlist;
 };
 
 bool MOBtrigger;
@@ -882,11 +862,10 @@ bool MOBtrigger;
 #define LIQ_WATER        0
 #define LIQ_MAX		16
 
-struct liq_type
-{
-   char *liq_name;
-   char *liq_color;
-   short liq_affect[3];
+struct liq_type {
+    char *liq_name;
+    char *liq_color;
+    short liq_affect[3];
 };
 
 
@@ -894,11 +873,10 @@ struct liq_type
 /*
  * Extra description data for a room or object.
  */
-struct extra_descr_data
-{
-   EXTRA_DESCR_DATA *next; /* Next in list                     */
-   char *keyword; /* Keyword in look/examine          */
-   char *description;   /* What to see                      */
+struct extra_descr_data {
+    EXTRA_DESCR_DATA *next; /* Next in list                     */
+    char *keyword; /* Keyword in look/examine          */
+    char *description;   /* What to see                      */
 };
 
 
@@ -906,22 +884,21 @@ struct extra_descr_data
 /*
  * Prototype for an object.
  */
-struct obj_index_data
-{
-   OBJ_INDEX_DATA *next;
-   EXTRA_DESCR_DATA *extra_descr;
-   AFFECT_DATA *affected;
-   char *name;
-   char *short_descr;
-   char *description;
-   short vnum;
-   short item_type;
-   short extra_flags;
-   short wear_flags;
-   short count;
-   short weight;
-   int cost;   /* Unused */
-   int value[4];
+struct obj_index_data {
+    OBJ_INDEX_DATA *next;
+    EXTRA_DESCR_DATA *extra_descr;
+    AFFECT_DATA *affected;
+    char *name;
+    char *short_descr;
+    char *description;
+    short vnum;
+    short item_type;
+    short extra_flags;
+    short wear_flags;
+    short count;
+    short weight;
+    int cost;   /* Unused */
+    int value[4];
 };
 
 
@@ -929,29 +906,28 @@ struct obj_index_data
 /*
  * One object.
  */
-struct obj_data
-{
-   OBJ_DATA *next;
-   OBJ_DATA *next_content;
-   OBJ_DATA *contains;
-   OBJ_DATA *in_obj;
-   CHAR_DATA *carried_by;
-   EXTRA_DESCR_DATA *extra_descr;
-   AFFECT_DATA *affected;
-   OBJ_INDEX_DATA *pIndexData;
-   ROOM_INDEX_DATA *in_room;
-   char *name;
-   char *short_descr;
-   char *description;
-   short item_type;
-   short extra_flags;
-   short wear_flags;
-   short wear_loc;
-   short weight;
-   int cost;
-   short level;
-   short timer;
-   int value[4];
+struct obj_data {
+    OBJ_DATA *next;
+    OBJ_DATA *next_content;
+    OBJ_DATA *contains;
+    OBJ_DATA *in_obj;
+    CHAR_DATA *carried_by;
+    EXTRA_DESCR_DATA *extra_descr;
+    AFFECT_DATA *affected;
+    OBJ_INDEX_DATA *pIndexData;
+    ROOM_INDEX_DATA *in_room;
+    char *name;
+    char *short_descr;
+    char *description;
+    short item_type;
+    short extra_flags;
+    short wear_flags;
+    short wear_loc;
+    short weight;
+    int cost;
+    short level;
+    short timer;
+    int value[4];
 };
 
 
@@ -959,14 +935,13 @@ struct obj_data
 /*
  * Exit data.
  */
-struct exit_data
-{
-   ROOM_INDEX_DATA *to_room;
-   short vnum;
-   short exit_info;
-   short key;
-   char *keyword;
-   char *description;
+struct exit_data {
+    ROOM_INDEX_DATA *to_room;
+    short vnum;
+    short exit_info;
+    short key;
+    char *keyword;
+    char *description;
 };
 
 
@@ -974,7 +949,7 @@ struct exit_data
 /*
  * Reset commands:
  *   '*': comment
- *   'M': read a mobile 
+ *   'M': read a mobile
  *   'O': read an object
  *   'P': put object in object
  *   'G': give object to mobile
@@ -987,13 +962,12 @@ struct exit_data
 /*
  * Area-reset definition.
  */
-struct reset_data
-{
-   RESET_DATA *next;
-   char command;
-   short arg1;
-   short arg2;
-   short arg3;
+struct reset_data {
+    RESET_DATA *next;
+    char command;
+    short arg1;
+    short arg2;
+    short arg3;
 };
 
 
@@ -1001,14 +975,13 @@ struct reset_data
 /*
  * Area definition.
  */
-struct area_data
-{
-   AREA_DATA *next;
-   RESET_DATA *reset_first;
-   RESET_DATA *reset_last;
-   char *name;
-   short age;
-   short nplayer;
+struct area_data {
+    AREA_DATA *next;
+    RESET_DATA *reset_first;
+    RESET_DATA *reset_last;
+    char *name;
+    short age;
+    short nplayer;
 };
 
 
@@ -1016,20 +989,19 @@ struct area_data
 /*
  * Room type.
  */
-struct room_index_data
-{
-   ROOM_INDEX_DATA *next;
-   CHAR_DATA *people;
-   OBJ_DATA *contents;
-   EXTRA_DESCR_DATA *extra_descr;
-   AREA_DATA *area;
-   EXIT_DATA *exit[6];
-   char *name;
-   char *description;
-   short vnum;
-   short room_flags;
-   short light;
-   short sector_type;
+struct room_index_data {
+    ROOM_INDEX_DATA *next;
+    CHAR_DATA *people;
+    OBJ_DATA *contents;
+    EXTRA_DESCR_DATA *extra_descr;
+    AREA_DATA *area;
+    EXIT_DATA *exit[6];
+    char *name;
+    char *description;
+    short vnum;
+    short room_flags;
+    short light;
+    short sector_type;
 };
 
 
@@ -1058,19 +1030,18 @@ struct room_index_data
 /*
  * Skills include spells as a particular case.
  */
-struct skill_type
-{
-   char *name; /* Name of skill     */
-   short skill_level[MAX_CLASS];   /* Level needed by class   */
-   SPELL_FUN *spell_fun;   /* Spell pointer (for spells) */
-   short target; /* Legal targets     */
-   short minimum_position;   /* Position for caster / user */
-   short *pgsn;  /* Pointer to associated gsn  */
-   short slot;   /* Slot for #OBJECT loading   */
-   short min_mana;  /* Minimum mana used    */
-   short beats;  /* Waiting time after use  */
-   char *noun_damage;   /* Damage message    */
-   char *msg_off; /* Wear off message     */
+struct skill_type {
+    char *name; /* Name of skill     */
+    short skill_level[MAX_CLASS];   /* Level needed by class   */
+    SPELL_FUN *spell_fun;   /* Spell pointer (for spells) */
+    short target; /* Legal targets     */
+    short minimum_position;   /* Position for caster / user */
+    short *pgsn;  /* Pointer to associated gsn  */
+    short slot;   /* Slot for #OBJECT loading   */
+    short min_mana;  /* Minimum mana used    */
+    short beats;  /* Waiting time after use  */
+    char *noun_damage;   /* Damage message    */
+    char *msg_off; /* Wear off message     */
 };
 
 
@@ -1169,13 +1140,12 @@ extern short gsn_sleep;
 /*
  * Structure for a command in the command lookup table.
  */
-struct cmd_type
-{
-   char *const name;
-   DO_FUN *do_fun;
-   short position;
-   short level;
-   short log;
+struct cmd_type {
+    char *const name;
+    DO_FUN *do_fun;
+    short position;
+    short level;
+    short log;
 };
 
 
@@ -1183,16 +1153,15 @@ struct cmd_type
 /*
  * Structure for a social in the socials table.
  */
-struct social_type
-{
-   char *const name;
-   char *const char_no_arg;
-   char *const others_no_arg;
-   char *const char_found;
-   char *const others_found;
-   char *const vict_found;
-   char *const char_auto;
-   char *const others_auto;
+struct social_type {
+    char *const name;
+    char *const char_no_arg;
+    char *const others_no_arg;
+    char *const char_found;
+    char *const others_found;
+    char *const vict_found;
+    char *const char_auto;
+    char *const others_auto;
 };
 
 
@@ -1251,184 +1220,184 @@ extern WEATHER_DATA weather_info;
  * Command functions.
  * Defined in act_*.c (mostly).
  */
-DECLARE_DO_FUN( do_advance );
-DECLARE_DO_FUN( do_allow );
-DECLARE_DO_FUN( do_answer );
-DECLARE_DO_FUN( do_areas );
-DECLARE_DO_FUN( do_at );
-DECLARE_DO_FUN( do_auction );
-DECLARE_DO_FUN( do_auto );
-DECLARE_DO_FUN( do_autoexit );
-DECLARE_DO_FUN( do_autoloot );
-DECLARE_DO_FUN( do_autosac );
-DECLARE_DO_FUN( do_backstab );
-DECLARE_DO_FUN( do_bamfin );
-DECLARE_DO_FUN( do_bamfout );
-DECLARE_DO_FUN( do_ban );
-DECLARE_DO_FUN( do_blank );
-DECLARE_DO_FUN( do_brandish );
-DECLARE_DO_FUN( do_brief );
-DECLARE_DO_FUN( do_bug );
-DECLARE_DO_FUN( do_buy );
-DECLARE_DO_FUN( do_cast );
-DECLARE_DO_FUN( do_channels );
-DECLARE_DO_FUN( do_chat );
-DECLARE_DO_FUN( do_close );
-DECLARE_DO_FUN( do_combine );
-DECLARE_DO_FUN( do_commands );
-DECLARE_DO_FUN( do_compare );
-DECLARE_DO_FUN( do_config );
-DECLARE_DO_FUN( do_consider );
-DECLARE_DO_FUN( do_credits );
-DECLARE_DO_FUN( do_deny );
-DECLARE_DO_FUN( do_description );
-DECLARE_DO_FUN( do_disarm );
-DECLARE_DO_FUN( do_disconnect );
-DECLARE_DO_FUN( do_down );
-DECLARE_DO_FUN( do_drink );
-DECLARE_DO_FUN( do_drop );
-DECLARE_DO_FUN( do_east );
-DECLARE_DO_FUN( do_eat );
-DECLARE_DO_FUN( do_echo );
-DECLARE_DO_FUN( do_emote );
-DECLARE_DO_FUN( do_equipment );
-DECLARE_DO_FUN( do_examine );
-DECLARE_DO_FUN( do_exits );
-DECLARE_DO_FUN( do_fill );
-DECLARE_DO_FUN( do_flee );
-DECLARE_DO_FUN( do_follow );
-DECLARE_DO_FUN( do_force );
-DECLARE_DO_FUN( do_freeze );
-DECLARE_DO_FUN( do_get );
-DECLARE_DO_FUN( do_give );
-DECLARE_DO_FUN( do_goto );
-DECLARE_DO_FUN( do_group );
-DECLARE_DO_FUN( do_gtell );
-DECLARE_DO_FUN( do_help );
-DECLARE_DO_FUN( do_hide );
-DECLARE_DO_FUN( do_holylight );
-DECLARE_DO_FUN( do_idea );
-DECLARE_DO_FUN( do_immtalk );
-DECLARE_DO_FUN( do_inventory );
-DECLARE_DO_FUN( do_invis );
-DECLARE_DO_FUN( do_kick );
-DECLARE_DO_FUN( do_kill );
-DECLARE_DO_FUN( do_list );
-DECLARE_DO_FUN( do_lock );
-DECLARE_DO_FUN( do_log );
-DECLARE_DO_FUN( do_look );
-DECLARE_DO_FUN( do_memory );
-DECLARE_DO_FUN( do_mfind );
-DECLARE_DO_FUN( do_mload );
-DECLARE_DO_FUN( do_mpasound );
-DECLARE_DO_FUN( do_mpat );
-DECLARE_DO_FUN( do_mpecho );
-DECLARE_DO_FUN( do_mpechoaround );
-DECLARE_DO_FUN( do_mpechoat );
-DECLARE_DO_FUN( do_mpforce );
-DECLARE_DO_FUN( do_mpgoto );
-DECLARE_DO_FUN( do_mpjunk );
-DECLARE_DO_FUN( do_mpkill );
-DECLARE_DO_FUN( do_mpmload );
-DECLARE_DO_FUN( do_mpoload );
-DECLARE_DO_FUN( do_mppurge );
-DECLARE_DO_FUN( do_mpstat );
-DECLARE_DO_FUN( do_mptransfer );
-DECLARE_DO_FUN( do_mset );
-DECLARE_DO_FUN( do_mstat );
-DECLARE_DO_FUN( do_mwhere );
-DECLARE_DO_FUN( do_murde );
-DECLARE_DO_FUN( do_murder );
-DECLARE_DO_FUN( do_music );
-DECLARE_DO_FUN( do_noemote );
-DECLARE_DO_FUN( do_north );
-DECLARE_DO_FUN( do_note );
-DECLARE_DO_FUN( do_notell );
-DECLARE_DO_FUN( do_ofind );
-DECLARE_DO_FUN( do_oload );
-DECLARE_DO_FUN( do_open );
-DECLARE_DO_FUN( do_order );
-DECLARE_DO_FUN( do_oset );
-DECLARE_DO_FUN( do_ostat );
-DECLARE_DO_FUN( do_owhere );
-DECLARE_DO_FUN( do_pagelen );
-DECLARE_DO_FUN( do_pardon );
-DECLARE_DO_FUN( do_password );
-DECLARE_DO_FUN( do_peace );
-DECLARE_DO_FUN( do_pick );
-DECLARE_DO_FUN( do_pose );
-DECLARE_DO_FUN( do_practice );
-DECLARE_DO_FUN( do_prompt );
-DECLARE_DO_FUN( do_purge );
-DECLARE_DO_FUN( do_put );
-DECLARE_DO_FUN( do_quaff );
-DECLARE_DO_FUN( do_question );
-DECLARE_DO_FUN( do_qui );
-DECLARE_DO_FUN( do_quit );
-DECLARE_DO_FUN( do_reboo );
-DECLARE_DO_FUN( do_reboot );
-DECLARE_DO_FUN( do_recall );
-DECLARE_DO_FUN( do_recho );
-DECLARE_DO_FUN( do_recite );
-DECLARE_DO_FUN( do_remove );
-DECLARE_DO_FUN( do_rent );
-DECLARE_DO_FUN( do_reply );
-DECLARE_DO_FUN( do_report );
-DECLARE_DO_FUN( do_rescue );
-DECLARE_DO_FUN( do_rest );
-DECLARE_DO_FUN( do_restore );
-DECLARE_DO_FUN( do_return );
-DECLARE_DO_FUN( do_rset );
-DECLARE_DO_FUN( do_rstat );
-DECLARE_DO_FUN( do_sacrifice );
-DECLARE_DO_FUN( do_save );
-DECLARE_DO_FUN( do_say );
-DECLARE_DO_FUN( do_score );
-DECLARE_DO_FUN( do_sell );
-DECLARE_DO_FUN( do_shout );
-DECLARE_DO_FUN( do_shutdow );
-DECLARE_DO_FUN( do_shutdown );
-DECLARE_DO_FUN( do_silence );
-DECLARE_DO_FUN( do_sla );
-DECLARE_DO_FUN( do_slay );
-DECLARE_DO_FUN( do_sleep );
-DECLARE_DO_FUN( do_slist );
-DECLARE_DO_FUN( do_slookup );
-DECLARE_DO_FUN( do_sneak );
-DECLARE_DO_FUN( do_snoop );
-DECLARE_DO_FUN( do_socials );
-DECLARE_DO_FUN( do_south );
-DECLARE_DO_FUN( do_spells );
-DECLARE_DO_FUN( do_split );
-DECLARE_DO_FUN( do_sset );
-DECLARE_DO_FUN( do_stand );
-DECLARE_DO_FUN( do_steal );
-DECLARE_DO_FUN( do_switch );
-DECLARE_DO_FUN( do_tell );
-DECLARE_DO_FUN( do_time );
-DECLARE_DO_FUN( do_title );
-DECLARE_DO_FUN( do_train );
-DECLARE_DO_FUN( do_transfer );
-DECLARE_DO_FUN( do_trust );
-DECLARE_DO_FUN( do_typo );
-DECLARE_DO_FUN( do_unlock );
-DECLARE_DO_FUN( do_up );
-DECLARE_DO_FUN( do_users );
-DECLARE_DO_FUN( do_value );
-DECLARE_DO_FUN( do_visible );
-DECLARE_DO_FUN( do_wake );
-DECLARE_DO_FUN( do_wear );
-DECLARE_DO_FUN( do_weather );
-DECLARE_DO_FUN( do_west );
-DECLARE_DO_FUN( do_where );
-DECLARE_DO_FUN( do_who );
-DECLARE_DO_FUN( do_wimpy );
-DECLARE_DO_FUN( do_wizhelp );
-DECLARE_DO_FUN( do_wizify );
-DECLARE_DO_FUN( do_wizlist );
-DECLARE_DO_FUN( do_wizlock );
-DECLARE_DO_FUN( do_yell );
-DECLARE_DO_FUN( do_zap );
+DECLARE_DO_FUN(do_advance);
+DECLARE_DO_FUN(do_allow);
+DECLARE_DO_FUN(do_answer);
+DECLARE_DO_FUN(do_areas);
+DECLARE_DO_FUN(do_at);
+DECLARE_DO_FUN(do_auction);
+DECLARE_DO_FUN(do_auto);
+DECLARE_DO_FUN(do_autoexit);
+DECLARE_DO_FUN(do_autoloot);
+DECLARE_DO_FUN(do_autosac);
+DECLARE_DO_FUN(do_backstab);
+DECLARE_DO_FUN(do_bamfin);
+DECLARE_DO_FUN(do_bamfout);
+DECLARE_DO_FUN(do_ban);
+DECLARE_DO_FUN(do_blank);
+DECLARE_DO_FUN(do_brandish);
+DECLARE_DO_FUN(do_brief);
+DECLARE_DO_FUN(do_bug);
+DECLARE_DO_FUN(do_buy);
+DECLARE_DO_FUN(do_cast);
+DECLARE_DO_FUN(do_channels);
+DECLARE_DO_FUN(do_chat);
+DECLARE_DO_FUN(do_close);
+DECLARE_DO_FUN(do_combine);
+DECLARE_DO_FUN(do_commands);
+DECLARE_DO_FUN(do_compare);
+DECLARE_DO_FUN(do_config);
+DECLARE_DO_FUN(do_consider);
+DECLARE_DO_FUN(do_credits);
+DECLARE_DO_FUN(do_deny);
+DECLARE_DO_FUN(do_description);
+DECLARE_DO_FUN(do_disarm);
+DECLARE_DO_FUN(do_disconnect);
+DECLARE_DO_FUN(do_down);
+DECLARE_DO_FUN(do_drink);
+DECLARE_DO_FUN(do_drop);
+DECLARE_DO_FUN(do_east);
+DECLARE_DO_FUN(do_eat);
+DECLARE_DO_FUN(do_echo);
+DECLARE_DO_FUN(do_emote);
+DECLARE_DO_FUN(do_equipment);
+DECLARE_DO_FUN(do_examine);
+DECLARE_DO_FUN(do_exits);
+DECLARE_DO_FUN(do_fill);
+DECLARE_DO_FUN(do_flee);
+DECLARE_DO_FUN(do_follow);
+DECLARE_DO_FUN(do_force);
+DECLARE_DO_FUN(do_freeze);
+DECLARE_DO_FUN(do_get);
+DECLARE_DO_FUN(do_give);
+DECLARE_DO_FUN(do_goto);
+DECLARE_DO_FUN(do_group);
+DECLARE_DO_FUN(do_gtell);
+DECLARE_DO_FUN(do_help);
+DECLARE_DO_FUN(do_hide);
+DECLARE_DO_FUN(do_holylight);
+DECLARE_DO_FUN(do_idea);
+DECLARE_DO_FUN(do_immtalk);
+DECLARE_DO_FUN(do_inventory);
+DECLARE_DO_FUN(do_invis);
+DECLARE_DO_FUN(do_kick);
+DECLARE_DO_FUN(do_kill);
+DECLARE_DO_FUN(do_list);
+DECLARE_DO_FUN(do_lock);
+DECLARE_DO_FUN(do_log);
+DECLARE_DO_FUN(do_look);
+DECLARE_DO_FUN(do_memory);
+DECLARE_DO_FUN(do_mfind);
+DECLARE_DO_FUN(do_mload);
+DECLARE_DO_FUN(do_mpasound);
+DECLARE_DO_FUN(do_mpat);
+DECLARE_DO_FUN(do_mpecho);
+DECLARE_DO_FUN(do_mpechoaround);
+DECLARE_DO_FUN(do_mpechoat);
+DECLARE_DO_FUN(do_mpforce);
+DECLARE_DO_FUN(do_mpgoto);
+DECLARE_DO_FUN(do_mpjunk);
+DECLARE_DO_FUN(do_mpkill);
+DECLARE_DO_FUN(do_mpmload);
+DECLARE_DO_FUN(do_mpoload);
+DECLARE_DO_FUN(do_mppurge);
+DECLARE_DO_FUN(do_mpstat);
+DECLARE_DO_FUN(do_mptransfer);
+DECLARE_DO_FUN(do_mset);
+DECLARE_DO_FUN(do_mstat);
+DECLARE_DO_FUN(do_mwhere);
+DECLARE_DO_FUN(do_murde);
+DECLARE_DO_FUN(do_murder);
+DECLARE_DO_FUN(do_music);
+DECLARE_DO_FUN(do_noemote);
+DECLARE_DO_FUN(do_north);
+DECLARE_DO_FUN(do_note);
+DECLARE_DO_FUN(do_notell);
+DECLARE_DO_FUN(do_ofind);
+DECLARE_DO_FUN(do_oload);
+DECLARE_DO_FUN(do_open);
+DECLARE_DO_FUN(do_order);
+DECLARE_DO_FUN(do_oset);
+DECLARE_DO_FUN(do_ostat);
+DECLARE_DO_FUN(do_owhere);
+DECLARE_DO_FUN(do_pagelen);
+DECLARE_DO_FUN(do_pardon);
+DECLARE_DO_FUN(do_password);
+DECLARE_DO_FUN(do_peace);
+DECLARE_DO_FUN(do_pick);
+DECLARE_DO_FUN(do_pose);
+DECLARE_DO_FUN(do_practice);
+DECLARE_DO_FUN(do_prompt);
+DECLARE_DO_FUN(do_purge);
+DECLARE_DO_FUN(do_put);
+DECLARE_DO_FUN(do_quaff);
+DECLARE_DO_FUN(do_question);
+DECLARE_DO_FUN(do_qui);
+DECLARE_DO_FUN(do_quit);
+DECLARE_DO_FUN(do_reboo);
+DECLARE_DO_FUN(do_reboot);
+DECLARE_DO_FUN(do_recall);
+DECLARE_DO_FUN(do_recho);
+DECLARE_DO_FUN(do_recite);
+DECLARE_DO_FUN(do_remove);
+DECLARE_DO_FUN(do_rent);
+DECLARE_DO_FUN(do_reply);
+DECLARE_DO_FUN(do_report);
+DECLARE_DO_FUN(do_rescue);
+DECLARE_DO_FUN(do_rest);
+DECLARE_DO_FUN(do_restore);
+DECLARE_DO_FUN(do_return);
+DECLARE_DO_FUN(do_rset);
+DECLARE_DO_FUN(do_rstat);
+DECLARE_DO_FUN(do_sacrifice);
+DECLARE_DO_FUN(do_save);
+DECLARE_DO_FUN(do_say);
+DECLARE_DO_FUN(do_score);
+DECLARE_DO_FUN(do_sell);
+DECLARE_DO_FUN(do_shout);
+DECLARE_DO_FUN(do_shutdow);
+DECLARE_DO_FUN(do_shutdown);
+DECLARE_DO_FUN(do_silence);
+DECLARE_DO_FUN(do_sla);
+DECLARE_DO_FUN(do_slay);
+DECLARE_DO_FUN(do_sleep);
+DECLARE_DO_FUN(do_slist);
+DECLARE_DO_FUN(do_slookup);
+DECLARE_DO_FUN(do_sneak);
+DECLARE_DO_FUN(do_snoop);
+DECLARE_DO_FUN(do_socials);
+DECLARE_DO_FUN(do_south);
+DECLARE_DO_FUN(do_spells);
+DECLARE_DO_FUN(do_split);
+DECLARE_DO_FUN(do_sset);
+DECLARE_DO_FUN(do_stand);
+DECLARE_DO_FUN(do_steal);
+DECLARE_DO_FUN(do_switch);
+DECLARE_DO_FUN(do_tell);
+DECLARE_DO_FUN(do_time);
+DECLARE_DO_FUN(do_title);
+DECLARE_DO_FUN(do_train);
+DECLARE_DO_FUN(do_transfer);
+DECLARE_DO_FUN(do_trust);
+DECLARE_DO_FUN(do_typo);
+DECLARE_DO_FUN(do_unlock);
+DECLARE_DO_FUN(do_up);
+DECLARE_DO_FUN(do_users);
+DECLARE_DO_FUN(do_value);
+DECLARE_DO_FUN(do_visible);
+DECLARE_DO_FUN(do_wake);
+DECLARE_DO_FUN(do_wear);
+DECLARE_DO_FUN(do_weather);
+DECLARE_DO_FUN(do_west);
+DECLARE_DO_FUN(do_where);
+DECLARE_DO_FUN(do_who);
+DECLARE_DO_FUN(do_wimpy);
+DECLARE_DO_FUN(do_wizhelp);
+DECLARE_DO_FUN(do_wizify);
+DECLARE_DO_FUN(do_wizlist);
+DECLARE_DO_FUN(do_wizlock);
+DECLARE_DO_FUN(do_yell);
+DECLARE_DO_FUN(do_zap);
 
 
 
@@ -1436,82 +1405,82 @@ DECLARE_DO_FUN( do_zap );
  * Spell functions.
  * Defined in magic.c.
  */
-DECLARE_SPELL_FUN( spell_null );
-DECLARE_SPELL_FUN( spell_acid_blast );
-DECLARE_SPELL_FUN( spell_armor );
-DECLARE_SPELL_FUN( spell_bless );
-DECLARE_SPELL_FUN( spell_blindness );
-DECLARE_SPELL_FUN( spell_burning_hands );
-DECLARE_SPELL_FUN( spell_call_lightning );
-DECLARE_SPELL_FUN( spell_cause_critical );
-DECLARE_SPELL_FUN( spell_cause_light );
-DECLARE_SPELL_FUN( spell_cause_serious );
-DECLARE_SPELL_FUN( spell_change_sex );
-DECLARE_SPELL_FUN( spell_charm_person );
-DECLARE_SPELL_FUN( spell_chill_touch );
-DECLARE_SPELL_FUN( spell_colour_spray );
-DECLARE_SPELL_FUN( spell_continual_light );
-DECLARE_SPELL_FUN( spell_control_weather );
-DECLARE_SPELL_FUN( spell_create_food );
-DECLARE_SPELL_FUN( spell_create_spring );
-DECLARE_SPELL_FUN( spell_create_water );
-DECLARE_SPELL_FUN( spell_cure_blindness );
-DECLARE_SPELL_FUN( spell_cure_critical );
-DECLARE_SPELL_FUN( spell_cure_light );
-DECLARE_SPELL_FUN( spell_cure_poison );
-DECLARE_SPELL_FUN( spell_cure_serious );
-DECLARE_SPELL_FUN( spell_curse );
-DECLARE_SPELL_FUN( spell_detect_evil );
-DECLARE_SPELL_FUN( spell_detect_hidden );
-DECLARE_SPELL_FUN( spell_detect_invis );
-DECLARE_SPELL_FUN( spell_detect_magic );
-DECLARE_SPELL_FUN( spell_detect_poison );
-DECLARE_SPELL_FUN( spell_dispel_evil );
-DECLARE_SPELL_FUN( spell_dispel_magic );
-DECLARE_SPELL_FUN( spell_earthquake );
-DECLARE_SPELL_FUN( spell_enchant_weapon );
-DECLARE_SPELL_FUN( spell_energy_drain );
-DECLARE_SPELL_FUN( spell_faerie_fire );
-DECLARE_SPELL_FUN( spell_faerie_fog );
-DECLARE_SPELL_FUN( spell_fireball );
-DECLARE_SPELL_FUN( spell_flamestrike );
-DECLARE_SPELL_FUN( spell_fly );
-DECLARE_SPELL_FUN( spell_gate );
-DECLARE_SPELL_FUN( spell_general_purpose );
-DECLARE_SPELL_FUN( spell_giant_strength );
-DECLARE_SPELL_FUN( spell_harm );
-DECLARE_SPELL_FUN( spell_heal );
-DECLARE_SPELL_FUN( spell_high_explosive );
-DECLARE_SPELL_FUN( spell_identify );
-DECLARE_SPELL_FUN( spell_infravision );
-DECLARE_SPELL_FUN( spell_invis );
-DECLARE_SPELL_FUN( spell_know_alignment );
-DECLARE_SPELL_FUN( spell_lightning_bolt );
-DECLARE_SPELL_FUN( spell_locate_object );
-DECLARE_SPELL_FUN( spell_magic_missile );
-DECLARE_SPELL_FUN( spell_mass_invis );
-DECLARE_SPELL_FUN( spell_pass_door );
-DECLARE_SPELL_FUN( spell_poison );
-DECLARE_SPELL_FUN( spell_protection );
-DECLARE_SPELL_FUN( spell_refresh );
-DECLARE_SPELL_FUN( spell_remove_curse );
-DECLARE_SPELL_FUN( spell_sanctuary );
-DECLARE_SPELL_FUN( spell_shocking_grasp );
-DECLARE_SPELL_FUN( spell_shield );
-DECLARE_SPELL_FUN( spell_sleep );
-DECLARE_SPELL_FUN( spell_stone_skin );
-DECLARE_SPELL_FUN( spell_summon );
-DECLARE_SPELL_FUN( spell_teleport );
-DECLARE_SPELL_FUN( spell_ventriloquate );
-DECLARE_SPELL_FUN( spell_weaken );
-DECLARE_SPELL_FUN( spell_word_of_recall );
-DECLARE_SPELL_FUN( spell_acid_breath );
-DECLARE_SPELL_FUN( spell_fire_breath );
-DECLARE_SPELL_FUN( spell_frost_breath );
-DECLARE_SPELL_FUN( spell_gas_breath );
-DECLARE_SPELL_FUN( spell_lightning_breath );
+DECLARE_SPELL_FUN(spell_null);
+DECLARE_SPELL_FUN(spell_acid_blast);
+DECLARE_SPELL_FUN(spell_armor);
+DECLARE_SPELL_FUN(spell_bless);
+DECLARE_SPELL_FUN(spell_blindness);
+DECLARE_SPELL_FUN(spell_burning_hands);
+DECLARE_SPELL_FUN(spell_call_lightning);
+DECLARE_SPELL_FUN(spell_cause_critical);
+DECLARE_SPELL_FUN(spell_cause_light);
+DECLARE_SPELL_FUN(spell_cause_serious);
+DECLARE_SPELL_FUN(spell_change_sex);
+DECLARE_SPELL_FUN(spell_charm_person);
+DECLARE_SPELL_FUN(spell_chill_touch);
+DECLARE_SPELL_FUN(spell_colour_spray);
+DECLARE_SPELL_FUN(spell_continual_light);
+DECLARE_SPELL_FUN(spell_control_weather);
+DECLARE_SPELL_FUN(spell_create_food);
+DECLARE_SPELL_FUN(spell_create_spring);
+DECLARE_SPELL_FUN(spell_create_water);
+DECLARE_SPELL_FUN(spell_cure_blindness);
+DECLARE_SPELL_FUN(spell_cure_critical);
+DECLARE_SPELL_FUN(spell_cure_light);
+DECLARE_SPELL_FUN(spell_cure_poison);
+DECLARE_SPELL_FUN(spell_cure_serious);
+DECLARE_SPELL_FUN(spell_curse);
+DECLARE_SPELL_FUN(spell_detect_evil);
+DECLARE_SPELL_FUN(spell_detect_hidden);
+DECLARE_SPELL_FUN(spell_detect_invis);
+DECLARE_SPELL_FUN(spell_detect_magic);
+DECLARE_SPELL_FUN(spell_detect_poison);
+DECLARE_SPELL_FUN(spell_dispel_evil);
+DECLARE_SPELL_FUN(spell_dispel_magic);
+DECLARE_SPELL_FUN(spell_earthquake);
+DECLARE_SPELL_FUN(spell_enchant_weapon);
+DECLARE_SPELL_FUN(spell_energy_drain);
+DECLARE_SPELL_FUN(spell_faerie_fire);
+DECLARE_SPELL_FUN(spell_faerie_fog);
+DECLARE_SPELL_FUN(spell_fireball);
+DECLARE_SPELL_FUN(spell_flamestrike);
+DECLARE_SPELL_FUN(spell_fly);
+DECLARE_SPELL_FUN(spell_gate);
+DECLARE_SPELL_FUN(spell_general_purpose);
+DECLARE_SPELL_FUN(spell_giant_strength);
+DECLARE_SPELL_FUN(spell_harm);
+DECLARE_SPELL_FUN(spell_heal);
+DECLARE_SPELL_FUN(spell_high_explosive);
+DECLARE_SPELL_FUN(spell_identify);
+DECLARE_SPELL_FUN(spell_infravision);
+DECLARE_SPELL_FUN(spell_invis);
+DECLARE_SPELL_FUN(spell_know_alignment);
+DECLARE_SPELL_FUN(spell_lightning_bolt);
+DECLARE_SPELL_FUN(spell_locate_object);
+DECLARE_SPELL_FUN(spell_magic_missile);
+DECLARE_SPELL_FUN(spell_mass_invis);
+DECLARE_SPELL_FUN(spell_pass_door);
+DECLARE_SPELL_FUN(spell_poison);
+DECLARE_SPELL_FUN(spell_protection);
+DECLARE_SPELL_FUN(spell_refresh);
+DECLARE_SPELL_FUN(spell_remove_curse);
+DECLARE_SPELL_FUN(spell_sanctuary);
+DECLARE_SPELL_FUN(spell_shocking_grasp);
+DECLARE_SPELL_FUN(spell_shield);
+DECLARE_SPELL_FUN(spell_sleep);
+DECLARE_SPELL_FUN(spell_stone_skin);
+DECLARE_SPELL_FUN(spell_summon);
+DECLARE_SPELL_FUN(spell_teleport);
+DECLARE_SPELL_FUN(spell_ventriloquate);
+DECLARE_SPELL_FUN(spell_weaken);
+DECLARE_SPELL_FUN(spell_word_of_recall);
+DECLARE_SPELL_FUN(spell_acid_breath);
+DECLARE_SPELL_FUN(spell_fire_breath);
+DECLARE_SPELL_FUN(spell_frost_breath);
+DECLARE_SPELL_FUN(spell_gas_breath);
+DECLARE_SPELL_FUN(spell_lightning_breath);
 
-char *crypt args( ( const char *key, const char *salt ) );
+char *crypt args((const char *key, const char *salt));
 
 /*
  * Data files used by the server.
@@ -1549,170 +1518,170 @@ char *crypt args( ( const char *key, const char *salt ) );
 #define SF	SPEC_FUN
 
 /* act_comm.c */
-void add_follower args( ( CHAR_DATA * ch, CHAR_DATA * master ) );
-void stop_follower args( ( CHAR_DATA * ch ) );
-void die_follower args( ( CHAR_DATA * ch ) );
-bool is_same_group args( ( CHAR_DATA * ach, CHAR_DATA * bch ) );
-bool is_note_to args( ( CHAR_DATA * ch, NOTE_DATA * pnote ) );
+void add_follower args((CHAR_DATA * ch, CHAR_DATA * master));
+void stop_follower args((CHAR_DATA * ch));
+void die_follower args((CHAR_DATA * ch));
+bool is_same_group args((CHAR_DATA * ach, CHAR_DATA * bch));
+bool is_note_to args((CHAR_DATA * ch, NOTE_DATA * pnote));
 
 /* act_info.c */
-void set_title args( ( CHAR_DATA * ch, char *title ) );
+void set_title args((CHAR_DATA * ch, char *title));
 
 /* act_move.c */
-void move_char args( ( CHAR_DATA * ch, int door ) );
+void move_char args((CHAR_DATA * ch, int door));
 
 /* act_obj.c */
 
 /* act_wiz.c */
-ROOM_INDEX_DATA *find_location args( ( CHAR_DATA * ch, char *arg ) );
+ROOM_INDEX_DATA *find_location args((CHAR_DATA * ch, char *arg));
 
 /* comm.c */
-void close_socket args( ( DESCRIPTOR_DATA * dclose ) );
-void write_to_buffer args( ( DESCRIPTOR_DATA * d, const char *txt, int length ) );
-void send_to_char args( ( const char *txt, CHAR_DATA * ch ) );
-void show_string args( ( DESCRIPTOR_DATA * d, char *input ) );
-void act args( ( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2, int type ) );
+void close_socket args((DESCRIPTOR_DATA * dclose));
+void write_to_buffer args((DESCRIPTOR_DATA * d, const char *txt, int length));
+void send_to_char args((const char *txt, CHAR_DATA * ch));
+void show_string args((DESCRIPTOR_DATA * d, char *input));
+void act args((const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2, int type));
 
 /* db.c */
-void boot_db args( ( void ) );
-void area_update args( ( void ) );
-CD *create_mobile args( ( MOB_INDEX_DATA * pMobIndex ) );
-OD *create_object args( ( OBJ_INDEX_DATA * pObjIndex, int level ) );
-void clear_char args( ( CHAR_DATA * ch ) );
-void free_char args( ( CHAR_DATA * ch ) );
-char *get_extra_descr args( ( const char *name, EXTRA_DESCR_DATA * ed ) );
-MID *get_mob_index args( ( int vnum ) );
-OID *get_obj_index args( ( int vnum ) );
-RID *get_room_index args( ( int vnum ) );
-char fread_letter args( ( FILE * fp ) );
-int fread_number args( ( FILE * fp ) );
-char *fread_string args( ( FILE * fp ) );
-void fread_to_eol args( ( FILE * fp ) );
-char *fread_word args( ( FILE * fp ) );
-void *alloc_mem args( ( int sMem ) );
-void *alloc_perm args( ( int sMem ) );
-void free_mem args( ( void *pMem, int sMem ) );
-char *str_dup args( ( const char *str ) );
-void free_string args( ( char *pstr ) );
-int number_fuzzy args( ( int number ) );
-int number_range args( ( int from, int to ) );
-int number_percent args( ( void ) );
-int number_door args( ( void ) );
-int number_bits args( ( int width ) );
-int number_mm args( ( void ) );
-int dice args( ( int number, int size ) );
-int interpolate args( ( int level, int value_00, int value_32 ) );
-void smash_tilde args( ( char *str ) );
-bool str_cmp args( ( const char *astr, const char *bstr ) );
-bool str_prefix args( ( const char *astr, const char *bstr ) );
-bool str_infix args( ( const char *astr, const char *bstr ) );
-bool str_suffix args( ( const char *astr, const char *bstr ) );
-char *capitalize args( ( const char *str ) );
-void append_file args( ( CHAR_DATA * ch, char *file, char *str ) );
-void bug args( ( const char *str, int param ) );
-void log_string args( ( const char *str ) );
-void tail_chain args( ( void ) );
+void boot_db args((void));
+void area_update args((void));
+CD *create_mobile args((MOB_INDEX_DATA * pMobIndex));
+OD *create_object args((OBJ_INDEX_DATA * pObjIndex, int level));
+void clear_char args((CHAR_DATA * ch));
+void free_char args((CHAR_DATA * ch));
+char *get_extra_descr args((const char *name, EXTRA_DESCR_DATA * ed));
+MID *get_mob_index args((int vnum));
+OID *get_obj_index args((int vnum));
+RID *get_room_index args((int vnum));
+char fread_letter args((FILE * fp));
+int fread_number args((FILE * fp));
+char *fread_string args((FILE * fp));
+void fread_to_eol args((FILE * fp));
+char *fread_word args((FILE * fp));
+void *alloc_mem args((int sMem));
+void *alloc_perm args((int sMem));
+void free_mem args((void *pMem, int sMem));
+char *str_dup args((const char *str));
+void free_string args((char *pstr));
+int number_fuzzy args((int number));
+int number_range args((int from, int to));
+int number_percent args((void));
+int number_door args((void));
+int number_bits args((int width));
+int number_mm args((void));
+int dice args((int number, int size));
+int interpolate args((int level, int value_00, int value_32));
+void smash_tilde args((char *str));
+bool str_cmp args((const char *astr, const char *bstr));
+bool str_prefix args((const char *astr, const char *bstr));
+bool str_infix args((const char *astr, const char *bstr));
+bool str_suffix args((const char *astr, const char *bstr));
+char *capitalize args((const char *str));
+void append_file args((CHAR_DATA * ch, char *file, char *str));
+void bug args((const char *str, int param));
+void log_string args((const char *str));
+void tail_chain args((void));
 
 /* fight.c */
-void violence_update args( ( void ) );
-void multi_hit args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt ) );
-void damage args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt ) );
-void update_pos args( ( CHAR_DATA * victim ) );
-void stop_fighting args( ( CHAR_DATA * ch, bool fBoth ) );
-void death_cry args( ( CHAR_DATA * ch ) );
-void raw_kill args( ( CHAR_DATA * victim ) );
+void violence_update args((void));
+void multi_hit args((CHAR_DATA * ch, CHAR_DATA * victim, int dt));
+void damage args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt));
+void update_pos args((CHAR_DATA * victim));
+void stop_fighting args((CHAR_DATA * ch, bool fBoth));
+void death_cry args((CHAR_DATA * ch));
+void raw_kill args((CHAR_DATA * victim));
 
 /* handler.c */
-int get_trust args( ( CHAR_DATA * ch ) );
-int get_age args( ( CHAR_DATA * ch ) );
-int get_curr_str args( ( CHAR_DATA * ch ) );
-int get_curr_int args( ( CHAR_DATA * ch ) );
-int get_curr_wis args( ( CHAR_DATA * ch ) );
-int get_curr_dex args( ( CHAR_DATA * ch ) );
-int get_curr_con args( ( CHAR_DATA * ch ) );
-int can_carry_n args( ( CHAR_DATA * ch ) );
-int can_carry_w args( ( CHAR_DATA * ch ) );
-bool is_name args( ( const char *str, char *namelist ) );
-void affect_to_char args( ( CHAR_DATA * ch, AFFECT_DATA * paf ) );
-void affect_remove args( ( CHAR_DATA * ch, AFFECT_DATA * paf ) );
-void affect_strip args( ( CHAR_DATA * ch, int sn ) );
-bool is_affected args( ( CHAR_DATA * ch, int sn ) );
-void affect_join args( ( CHAR_DATA * ch, AFFECT_DATA * paf ) );
-void char_from_room args( ( CHAR_DATA * ch ) );
-void char_to_room args( ( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex ) );
-void obj_to_char args( ( OBJ_DATA * obj, CHAR_DATA * ch ) );
-void obj_from_char args( ( OBJ_DATA * obj ) );
-int apply_ac args( ( OBJ_DATA * obj, int iWear ) );
-OD *get_eq_char args( ( CHAR_DATA * ch, int iWear ) );
-void equip_char args( ( CHAR_DATA * ch, OBJ_DATA * obj, int iWear ) );
-void unequip_char args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );
-int count_obj_list args( ( OBJ_INDEX_DATA * obj, OBJ_DATA * list ) );
-void obj_from_room args( ( OBJ_DATA * obj ) );
-void obj_to_room args( ( OBJ_DATA * obj, ROOM_INDEX_DATA * pRoomIndex ) );
-void obj_to_obj args( ( OBJ_DATA * obj, OBJ_DATA * obj_to ) );
-void obj_from_obj args( ( OBJ_DATA * obj ) );
-void extract_obj args( ( OBJ_DATA * obj ) );
-void extract_char args( ( CHAR_DATA * ch, bool fPull ) );
-CD *get_char_room args( ( CHAR_DATA * ch, char *argument ) );
-CD *get_char_world args( ( CHAR_DATA * ch, char *argument ) );
-OD *get_obj_type args( ( OBJ_INDEX_DATA * pObjIndexData ) );
-OD *get_obj_list args( ( CHAR_DATA * ch, char *argument, OBJ_DATA * list ) );
-OD *get_obj_carry args( ( CHAR_DATA * ch, char *argument ) );
-OD *get_obj_wear args( ( CHAR_DATA * ch, char *argument ) );
-OD *get_obj_here args( ( CHAR_DATA * ch, char *argument ) );
-OD *get_obj_world args( ( CHAR_DATA * ch, char *argument ) );
-OD *create_money args( ( int amount ) );
-int get_obj_number args( ( OBJ_DATA * obj ) );
-int get_obj_weight args( ( OBJ_DATA * obj ) );
-bool room_is_dark args( ( ROOM_INDEX_DATA * pRoomIndex ) );
-bool room_is_private args( ( ROOM_INDEX_DATA * pRoomIndex ) );
-bool can_see args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool can_see_obj args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );
-bool can_drop_obj args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );
-char *item_type_name args( ( OBJ_DATA * obj ) );
-char *affect_loc_name args( ( int location ) );
-char *affect_bit_name args( ( int vector ) );
-char *extra_bit_name args( ( int extra_flags ) );
+int get_trust args((CHAR_DATA * ch));
+int get_age args((CHAR_DATA * ch));
+int get_curr_str args((CHAR_DATA * ch));
+int get_curr_int args((CHAR_DATA * ch));
+int get_curr_wis args((CHAR_DATA * ch));
+int get_curr_dex args((CHAR_DATA * ch));
+int get_curr_con args((CHAR_DATA * ch));
+int can_carry_n args((CHAR_DATA * ch));
+int can_carry_w args((CHAR_DATA * ch));
+bool is_name args((const char *str, char *namelist));
+void affect_to_char args((CHAR_DATA * ch, AFFECT_DATA * paf));
+void affect_remove args((CHAR_DATA * ch, AFFECT_DATA * paf));
+void affect_strip args((CHAR_DATA * ch, int sn));
+bool is_affected args((CHAR_DATA * ch, int sn));
+void affect_join args((CHAR_DATA * ch, AFFECT_DATA * paf));
+void char_from_room args((CHAR_DATA * ch));
+void char_to_room args((CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex));
+void obj_to_char args((OBJ_DATA * obj, CHAR_DATA * ch));
+void obj_from_char args((OBJ_DATA * obj));
+int apply_ac args((OBJ_DATA * obj, int iWear));
+OD *get_eq_char args((CHAR_DATA * ch, int iWear));
+void equip_char args((CHAR_DATA * ch, OBJ_DATA * obj, int iWear));
+void unequip_char args((CHAR_DATA * ch, OBJ_DATA * obj));
+int count_obj_list args((OBJ_INDEX_DATA * obj, OBJ_DATA * list));
+void obj_from_room args((OBJ_DATA * obj));
+void obj_to_room args((OBJ_DATA * obj, ROOM_INDEX_DATA * pRoomIndex));
+void obj_to_obj args((OBJ_DATA * obj, OBJ_DATA * obj_to));
+void obj_from_obj args((OBJ_DATA * obj));
+void extract_obj args((OBJ_DATA * obj));
+void extract_char args((CHAR_DATA * ch, bool fPull));
+CD *get_char_room args((CHAR_DATA * ch, char *argument));
+CD *get_char_world args((CHAR_DATA * ch, char *argument));
+OD *get_obj_type args((OBJ_INDEX_DATA * pObjIndexData));
+OD *get_obj_list args((CHAR_DATA * ch, char *argument, OBJ_DATA * list));
+OD *get_obj_carry args((CHAR_DATA * ch, char *argument));
+OD *get_obj_wear args((CHAR_DATA * ch, char *argument));
+OD *get_obj_here args((CHAR_DATA * ch, char *argument));
+OD *get_obj_world args((CHAR_DATA * ch, char *argument));
+OD *create_money args((int amount));
+int get_obj_number args((OBJ_DATA * obj));
+int get_obj_weight args((OBJ_DATA * obj));
+bool room_is_dark args((ROOM_INDEX_DATA * pRoomIndex));
+bool room_is_private args((ROOM_INDEX_DATA * pRoomIndex));
+bool can_see args((CHAR_DATA * ch, CHAR_DATA * victim));
+bool can_see_obj args((CHAR_DATA * ch, OBJ_DATA * obj));
+bool can_drop_obj args((CHAR_DATA * ch, OBJ_DATA * obj));
+char *item_type_name args((OBJ_DATA * obj));
+char *affect_loc_name args((int location));
+char *affect_bit_name args((int vector));
+char *extra_bit_name args((int extra_flags));
 
 /* interp.c */
-void interpret args( ( CHAR_DATA * ch, char *argument ) );
-bool is_number args( ( char *arg ) );
-int number_argument args( ( char *argument, char *arg ) );
-char *one_argument args( ( char *argument, char *arg_first ) );
-bool IS_SWITCHED args( ( CHAR_DATA * ch ) );
+void interpret args((CHAR_DATA * ch, char *argument));
+bool is_number args((char *arg));
+int number_argument args((char *argument, char *arg));
+char *one_argument args((char *argument, char *arg_first));
+bool IS_SWITCHED args((CHAR_DATA * ch));
 
 /* magic.c */
-int skill_lookup args( ( const char *name ) );
-int slot_lookup args( ( int slot ) );
-bool saves_spell args( ( int level, CHAR_DATA * victim ) );
-void obj_cast_spell args( ( int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
+int skill_lookup args((const char *name));
+int slot_lookup args((int slot));
+bool saves_spell args((int level, CHAR_DATA * victim));
+void obj_cast_spell args((int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj));
 
 /* mob_prog.c */
-void mprog_wordlist_check args( ( char *arg, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA * object, void *vo, int type ) );
-void mprog_percent_check args( ( CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA * object, void *vo, int type ) );
-void mprog_act_trigger args( ( char *buf, CHAR_DATA * mob, CHAR_DATA * ch, OBJ_DATA * obj, void *vo ) );
-void mprog_bribe_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch, int amount ) );
-void mprog_entry_trigger args( ( CHAR_DATA * mob ) );
-void mprog_give_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch, OBJ_DATA * obj ) );
-void mprog_greet_trigger args( ( CHAR_DATA * mob ) );
-void mprog_fight_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch ) );
-void mprog_hitprcnt_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch ) );
-void mprog_death_trigger args( ( CHAR_DATA * mob ) );
-void mprog_random_trigger args( ( CHAR_DATA * mob ) );
-void mprog_speech_trigger args( ( char *txt, CHAR_DATA * mob ) );
+void mprog_wordlist_check args((char *arg, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA * object, void *vo, int type));
+void mprog_percent_check args((CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA * object, void *vo, int type));
+void mprog_act_trigger args((char *buf, CHAR_DATA * mob, CHAR_DATA * ch, OBJ_DATA * obj, void *vo));
+void mprog_bribe_trigger args((CHAR_DATA * mob, CHAR_DATA * ch, int amount));
+void mprog_entry_trigger args((CHAR_DATA * mob));
+void mprog_give_trigger args((CHAR_DATA * mob, CHAR_DATA * ch, OBJ_DATA * obj));
+void mprog_greet_trigger args((CHAR_DATA * mob));
+void mprog_fight_trigger args((CHAR_DATA * mob, CHAR_DATA * ch));
+void mprog_hitprcnt_trigger args((CHAR_DATA * mob, CHAR_DATA * ch));
+void mprog_death_trigger args((CHAR_DATA * mob));
+void mprog_random_trigger args((CHAR_DATA * mob));
+void mprog_speech_trigger args((char *txt, CHAR_DATA * mob));
 
 /* save.c */
-void save_char_obj args( ( CHAR_DATA * ch ) );
-bool load_char_obj args( ( DESCRIPTOR_DATA * d, char *name ) );
+void save_char_obj args((CHAR_DATA * ch));
+bool load_char_obj args((DESCRIPTOR_DATA * d, char *name));
 
 /* special.c */
-SF *spec_lookup args( ( const char *name ) );
+SF *spec_lookup args((const char *name));
 
 /* update.c */
-void advance_level args( ( CHAR_DATA * ch ) );
-void gain_exp args( ( CHAR_DATA * ch, int gain ) );
-void gain_condition args( ( CHAR_DATA * ch, int iCond, int value ) );
-void update_handler args( ( void ) );
+void advance_level args((CHAR_DATA * ch));
+void gain_exp args((CHAR_DATA * ch, int gain));
+void gain_condition args((CHAR_DATA * ch, int iCond, int value));
+void update_handler args((void));
 
 #undef	CD
 #undef	MID

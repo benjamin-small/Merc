@@ -1558,7 +1558,7 @@ PFUN(imc_recv_broadcast) {
     if(!(c = imc_findchannel(chan))) {
         return;
     }
-    if(!sender || sender[0] == '\0') {
+    if(sender == NULL || sender[0] == '\0') {
         imc_display_channel(c, q->from, txt, em);
     } else {
         imc_display_channel(c, sender, txt, em);
@@ -2141,27 +2141,27 @@ PFUN(imc_recv_isalive) {
         return;
     }
     r->expired = FALSE;
-    if(url && url[0] != '\0') {
+    if(url != NULL && url[0] != '\0') {
         IMCSTRFREE(r->url);
         r->url = IMCSTRALLOC(url);
     }
-    if(version && version[0] != '\0') {
+    if(version != NULL && version[0] != '\0') {
         IMCSTRFREE(r->version);
         r->version = IMCSTRALLOC(version);
     }
-    if(netname && netname[0] != '\0') {
+    if(netname != NULL && netname[0] != '\0') {
         IMCSTRFREE(r->network);
         r->network = IMCSTRALLOC(netname);
     }
-    if(q->route && q->route[0] != '\0') {
+    if(q->route != NULL && q->route[0] != '\0') {
         IMCSTRFREE(r->path);
         r->path = IMCSTRALLOC(q->route);
     }
-    if(host && host[0] != '\0') {
+    if(host != NULL && host[0] != '\0') {
         IMCSTRFREE(r->host);
         r->host = IMCSTRALLOC(host);
     }
-    if(iport && iport[0] != '\0') {
+    if(iport != NULL && iport[0] != '\0') {
         IMCSTRFREE(r->port);
         r->port = IMCSTRALLOC(iport);
     }
@@ -2224,7 +2224,7 @@ PFUN(imc_recv_iceupdate) {
         imc_new_channel(chan, owner, ops, invite, exclude, copen, perm, lname);
         return;
     }
-    if(!chan || chan[0] == '\0') {
+    if(chan == NULL || chan[0] == '\0') {
         imclog("%s: NULL channel name received, skipping", __FUNCTION__);
         return;
     }
@@ -2612,7 +2612,7 @@ void imc_process_authentication(char *packet) {
     packet = imcone_argument(packet, version);   /* This is more or less ignored */
     packet = imcone_argument(packet, netname);
     packet = imcone_argument(packet, encrypt);
-    if(!rname || rname[0] == '\0') {
+    if(rname == NULL || rname[0] == '\0') {
         imclog("%s", "Incomplete authentication packet. Unable to connect.");
         imc_shutdown(FALSE);
         return;
@@ -2621,7 +2621,7 @@ void imc_process_authentication(char *packet) {
         char pwd[SMST];
         char *cryptpwd;
         long auth_value = 0;
-        if(!pw || pw[0] == '\0') {
+        if(pw == NULL || pw[0] == '\0') {
             imclog("SHA256 Authentication failure: No auth_value was returned by %s.", rname);
             imc_shutdown(FALSE);
             return;
@@ -2655,7 +2655,7 @@ void imc_process_authentication(char *packet) {
             return;
         }
         imclog("%s", "Standard Authentication completed.");
-        if(encrypt && encrypt[0] != '\0' && !strcasecmp(encrypt, "SHA256-SET")) {
+        if(encrypt != NULL && encrypt[0] != '\0' && !strcasecmp(encrypt, "SHA256-SET")) {
             imclog("SHA-256 Authentication has been enabled.");
             this_imcmud->sha256pass = TRUE;
             imc_save_config();
@@ -4561,7 +4561,7 @@ IMC_CMD(imcsetup) {
     argument = imcone_argument(argument, imccmd);
     argument = imcone_argument(argument, chan);
     argument = imcone_argument(argument, arg1);
-    if(!imccmd || imccmd[0] == '\0' || !chan || chan[0] == '\0') {
+    if(imccmd == NULL || imccmd[0] == '\0' || chan == NULL || chan[0] == '\0') {
         imc_to_char("Syntax: imcsetup <command> <channel> [<data..>]\r\n", ch);
         imc_to_char("Where 'command' is one of the following:\r\n", ch);
         imc_to_char("delete rename perm regformat emoteformat socformat\r\n\r\n", ch);
@@ -4615,7 +4615,7 @@ IMC_CMD(imcsetup) {
             imc_to_char("You cannot perform a rename all on channels.\r\n", ch);
             return;
         }
-        if(!arg1 || arg1[0] == '\0') {
+        if(arg1 == NULL || arg1[0] == '\0') {
             imc_to_char("Missing 'newname' argument for 'imcsetup rename'\r\n", ch);   /* Lets be more kind! -- X */
             imc_to_char("Syntax: imcsetup rename <local channel> <newname>\r\n", ch);     /* Fixed syntax message -- X */
             return;
@@ -5043,7 +5043,7 @@ IMC_CMD(imcfinger) {
         return;
     }
     argument = imcone_argument(argument, arg);
-    if(!arg || arg[0] == '\0') {
+    if(arg == NULL || arg[0] == '\0') {
         imc_to_char("~wUsage: imcfinger person@mud\r\n", ch);
         imc_to_char("~wUsage: imcfinger <field> <value>\r\n", ch);
         imc_to_char("~wWhere field is one of:\r\n\r\n", ch);
@@ -5326,7 +5326,7 @@ IMC_CMD(imcdisconnect) {
 IMC_CMD(imcconfig) {
     char arg1[SMST];
     argument = imcone_argument(argument, arg1);
-    if(!arg1 || arg1[0] == '\0') {
+    if(arg1 == NULL || arg1[0] == '\0') {
         imc_to_char("~wSyntax: &Gimc <field> [value]\r\n\r\n", ch);
         imc_to_char("~wConfiguration info for your mud. Changes save when edited.\r\n", ch);
         imc_to_char("~wYou may set the following:\r\n\r\n", ch);
@@ -5545,7 +5545,7 @@ IMC_CMD(imcignore) {
     IMC_IGNORE *ign;
     char arg[SMST];
     argument = imcone_argument(argument, arg);
-    if(!arg || arg[0] == '\0') {
+    if(arg == NULL || arg[0] == '\0') {
         imc_to_char("You currently ignore the following:\r\n", ch);
         for(count = 0, ign = FIRST_IMCIGNORE(ch); ign; ign = ign->next, count++) {
             imc_printf(ch, "%s\r\n", ign->name);
@@ -5600,7 +5600,7 @@ IMC_CMD(imcban) {
     IMC_BAN *ban;
     char arg[SMST];
     argument = imcone_argument(argument, arg);
-    if(!arg || arg[0] == '\0') {
+    if(arg == NULL || arg[0] == '\0') {
         imc_to_char("The mud currently bans the following:\r\n", ch);
         for(count = 0, ban = first_imc_ban; ban; ban = ban->next, count++) {
             imc_printf(ch, "%s\r\n", ban->name);
@@ -5647,7 +5647,7 @@ IMC_CMD(imc_deny_channel) {
     CHAR_DATA *victim;
     IMC_CHANNEL *channel;
     argument = imcone_argument(argument, vic_name);
-    if(!vic_name || vic_name[0] == '\0' || !argument || argument[0] == '\0') {
+    if(vic_name == NULL || vic_name[0] == '\0' || !argument || argument[0] == '\0') {
         imc_to_char("Usage: imcdeny <person> <local channel name>\r\n", ch);
         imc_to_char("Usage: imcdeny <person> [tell/beep/finger]\r\n", ch);
         return;
@@ -5732,7 +5732,7 @@ IMC_CMD(imcpermset) {
     char arg[SMST];
     int permvalue;
     argument = imcone_argument(argument, arg);
-    if(!arg || arg[0] == '\0') {
+    if(arg == NULL || arg[0] == '\0') {
         imc_to_char("Usage: imcpermset <user> <permission>\r\n", ch);
         imc_to_char("Permission can be one of: None, Mort, Imm, Admin, Imp\r\n", ch);
         return;
@@ -5853,7 +5853,7 @@ IMC_CMD(imcremoteadmin) {
     argument = imcone_argument(argument, server);
     argument = imcone_argument(argument, pwd);
     argument = imcone_argument(argument, cmd);
-    if(!server || server[0] == '\0' || !cmd || cmd[0] == '\0') {
+    if(server == NULL || server[0] == '\0' || cmd == NULL || cmd[0] == '\0') {
         imc_to_char("Syntax: imcadmin <server> <password> <command> [<data..>]\r\n", ch);
         imc_to_char("You must be an approved server administrator to use remote commands.\r\n", ch);
         return;
@@ -5978,7 +5978,7 @@ IMC_CMD(imccedit) {
     bool found = FALSE, aliasfound = FALSE;
     argument = imcone_argument(argument, name);
     argument = imcone_argument(argument, option);
-    if(!name || name[0] == '\0' || !option || option[0] == '\0') {
+    if(name == NULL || name[0] == '\0' || option == NULL || option[0] == '\0') {
         imc_to_char("Usage: imccedit <command> <create|delete|alias|rename|code|permission|connected> <field>.\r\n", ch);
         return;
     }
@@ -6150,7 +6150,7 @@ IMC_CMD(imchedit) {
     bool found = FALSE;
     argument = imcone_argument(argument, name);
     argument = imcone_argument(argument, cmd);
-    if(!name || name[0] == '\0' || !cmd || cmd[0] == '\0' || !argument || argument[0] == '\0') {
+    if(name == NULL || name[0] == '\0' || cmd == NULL || cmd[0] == '\0' || argument == NULL || argument[0] == '\0') {
         imc_to_char("Usage: imchedit <topic> [name|perm] <field>\r\n", ch);
         imc_to_char("Where <field> can be either name, or permission level.\r\n", ch);
         return;
@@ -6523,19 +6523,19 @@ char *imc_send_social(CHAR_DATA * ch, char *argument, int telloption) {
     }
     if(telloption == 0) {
         snprintf(socbuf, LGST, "%s", imc_find_social(ch, arg1, person, mud, 0));
-        if(!socbuf || socbuf[0] == '\0') {
+        if(socbuf == NULL || socbuf[0] == '\0') {
             return "";
         }
     }
     if(telloption == 1) {
         snprintf(socbuf, LGST, "%s", imc_find_social(ch, arg1, person, mud, 1));
-        if(!socbuf || socbuf[0] == '\0') {
+        if(socbuf == NULL || socbuf[0] == '\0') {
             return "";
         }
     }
     if(telloption == 2) {
         snprintf(socbuf, LGST, "%s", imc_find_social(ch, arg1, person, mud, 2));
-        if(!socbuf || socbuf[0] == '\0') {
+        if(socbuf == NULL || socbuf[0] == '\0') {
             return "";
         }
     }
