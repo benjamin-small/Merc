@@ -713,7 +713,7 @@ struct mob_index_data {
     short sex;
     short level;
     int act;
-    int affected_by;
+    unsigned int affected_by;
     short alignment;
     short hitroll;   /* Unused */
     short ac;  /* Unused */
@@ -775,7 +775,7 @@ struct char_data {
     int gold;
     int exp;
     int act;
-    int affected_by;
+    unsigned int affected_by;
     short position;
     short practice;
     short carry_weight;
