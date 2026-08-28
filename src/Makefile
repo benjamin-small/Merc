@@ -3,6 +3,10 @@ PROF    = -g3
 C_FLAGS = -O -Wall $(PROF)
 L_FLAGS = -O $(PROF) -lcrypt
 
+ifeq ($(shell uname -s),Darwin)
+L_FLAGS = -O $(PROF)
+endif
+
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
 

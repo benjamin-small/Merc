@@ -30,6 +30,8 @@
 #include <sys/param.h>
 #if defined(__FreeBSD__)
 #include <sys/endian.h>
+#elif defined(__APPLE__)
+#include <machine/endian.h>
 #else
 #include <endian.h>
 #endif
@@ -37,14 +39,14 @@
 
 #if __FreeBSD_version < 500111
 
-static __inline int
+static __inline uint32_t
 be32dec(const void *pp) {
     unsigned char const *p = (unsigned char const *)pp;
     return ((p[0] << 24) | (p[1] << 16) | (p[2] << 8) | p[3]);
 }
 
 static __inline void
-be32enc(void *pp, int u) {
+be32enc(void *pp, uint32_t u) {
     unsigned char *p = (unsigned char *)pp;
     p[0] = (u >> 24) & 0xff;
     p[1] = (u >> 16) & 0xff;
@@ -71,7 +73,7 @@ be32enc(void *pp, int u) {
  * (unsigned char) in big-endian form.  Assumes len is a multiple of 4.
  */
 static void
-be32enc_vect(unsigned char *dst, const int *src, size_t len) {
+be32enc_vect(unsigned char *dst, const uint32_t *src, size_t len) {
     size_t i;
     for(i = 0; i < len / 4; i++) {
         be32enc(dst + i * 4, src[i]);
@@ -83,7 +85,7 @@ be32enc_vect(unsigned char *dst, const int *src, size_t len) {
  * len/4 vector of (int).  Assumes len is a multiple of 4.
  */
 static void
-be32dec_vect(int *dst, const unsigned char *src, size_t len) {
+be32dec_vect(uint32_t *dst, const unsigned char *src, size_t len) {
     size_t i;
     for(i = 0; i < len / 4; i++) {
         dst[i] = be32dec(src + i * 4);
@@ -122,10 +124,10 @@ be32dec_vect(int *dst, const unsigned char *src, size_t len) {
  * the 512-bit input block to produce a new state.
  */
 static void
-SHA256_Transform(int * state, const unsigned char block[64]) {
-    int W[64];
-    int S[8];
-    int t0, t1;
+SHA256_Transform(uint32_t * state, const unsigned char block[64]) {
+    uint32_t W[64];
+    uint32_t S[8];
+    uint32_t t0, t1;
     int i;
     /* 1. Prepare message schedule W. */
     be32dec_vect(W, block, 64);
@@ -247,13 +249,13 @@ void SHA256_Init(SHA256_CTX * ctx) {
 
 /* Add bytes into the hash */
 void SHA256_Update(SHA256_CTX * ctx, const unsigned char *src, size_t len) {
-    int bitlen[2];
+    uint32_t bitlen[2];
     size_t r;
     /* Number of bytes left in the buffer from previous updates */
     r = (ctx->count[1] >> 3) & 0x3f;
     /* Convert the length into a number of bits */
-    bitlen[1] = ((int)len) << 3;
-    bitlen[0] = (int)(len >> 29);
+    bitlen[1] = (uint32_t)len << 3;
+    bitlen[0] = (uint32_t)(len >> 29);
     /* Update number of bits */
     if((ctx->count[1] += bitlen[1]) < bitlen[1]) {
         ctx->count[0]++;
