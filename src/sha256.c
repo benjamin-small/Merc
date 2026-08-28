@@ -56,7 +56,7 @@ be32enc(void *pp, uint32_t u) {
 
 #endif
 
-#if BYTE_ORDER == BIG_ENDIAN
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
 
 /* Copy a vector of big-endian int into a vector of bytes */
 #define be32enc_vect(dst, src, len)	\
