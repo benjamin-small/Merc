@@ -55,6 +55,7 @@ NOTE_DATA *note_list;
 OBJ_DATA *object_list;
 TIME_INFO_DATA time_info;
 WEATHER_DATA weather_info;
+bool MOBtrigger;
 
 short gsn_backstab;
 short gsn_dodge;

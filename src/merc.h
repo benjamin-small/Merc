@@ -839,7 +839,7 @@ struct mob_prog_data {
     char *comlist;
 };
 
-bool MOBtrigger;
+extern bool MOBtrigger;
 
 #define ERROR_PROG        -1
 #define IN_FILE_PROG       0
