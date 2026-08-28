@@ -29,12 +29,13 @@
 #ifndef _SHA256_H_
 #define _SHA256_H_
 
+#include <stdint.h>
 #include <sys/types.h>
 
 typedef struct SHA256Context
 {
-   int state[8];
-   int count[2];
+   uint32_t state[8];
+   uint32_t count[2];
    unsigned char buf[64];
 } SHA256_CTX;
 
