@@ -303,7 +303,7 @@ char *sha256_crypt(const char *pwd) {
     SHA256_Update(&context, (const unsigned char *) pwd, strlen(pwd));
     SHA256_Final(sha256sum, &context);
     for(j = 0; j < 32; ++j) {
-        snprintf(output + j * 2, 65, "%02x", sha256sum[j]);
+        snprintf(output + j * 2, 3, "%02x", sha256sum[j]);
     }
     return output;
 }
